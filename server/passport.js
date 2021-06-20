@@ -16,9 +16,9 @@ passport.use(
         return userModel
           .create({
             email: userGoogle.emails[0].value,
-            name: userGoogle.name.givenName,
-            surname: userGoogle.name.familyName,
-            avatar: userGoogle.photos[0].value,
+            name: userGoogle.name.givenName || '',
+            surname: userGoogle.name.familyName || '',
+            avatar: userGoogle.photos[0].value || '',
           })
           .then((res) => {
             return done(null, res.dataValues);
